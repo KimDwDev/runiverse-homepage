@@ -3,23 +3,19 @@ import { FEATURES } from '../content'
 
 export default function Features() {
   return (
-    <Section
-      id="features"
-      eyebrow="무엇을 하나요"
-      title="러닝을 혼자 두지 않습니다"
-      description="꾸준히 달리기 어려운 이유는 체력보다 혼자라는 데 있습니다. Runiverse는 그 자리를 채웁니다."
-    >
-      <ul className="card-grid">
+    <Section id="what" title="하는 일">
+      {/* 카드 그리드 대신 괘선으로 나눈 2단 행 — 사양서에 가까운 배치 */}
+      <dl className="rows">
         {FEATURES.map((feature) => (
-          <li key={feature.id} className="card">
-            <span className="card__icon" aria-hidden="true">
-              {feature.icon}
-            </span>
-            <h3 className="card__title">{feature.title}</h3>
-            <p className="card__description">{feature.description}</p>
-          </li>
+          <div key={feature.id} className="row">
+            <dt className="row__label">{feature.label}</dt>
+            <dd className="row__body">
+              <h3 className="row__title">{feature.title}</h3>
+              <p className="row__description">{feature.description}</p>
+            </dd>
+          </div>
         ))}
-      </ul>
+      </dl>
     </Section>
   )
 }

@@ -1,25 +1,32 @@
 import Section from '../components/Section'
-import { TEAM } from '../content'
+import { TEAM, avatarUrl, profileUrl } from '../content'
 
 export default function Team() {
   return (
     <Section
       id="team"
-      eyebrow="만든 사람들"
-      title="SW Maestro에서 시작했습니다"
-      description="달리기를 좋아하지만 혼자서는 잘 안 되던 두 사람이 만들고 있습니다."
+      title="만드는 사람"
+      description="달리기를 좋아하는데 혼자서는 잘 안 되던 사람들이 모였습니다."
     >
+      {/* 카드로 감싸지 않고 이름과 얼굴만 나란히 */}
       <ul className="team">
         {TEAM.map((member) => (
-          <li key={member.github} className="team__member">
-            <p className="team__name">{member.name}</p>
-            <a
-              className="team__link"
-              href={`https://github.com/${member.github}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              @{member.github}
+          <li key={member.github}>
+            <a className="team__person" href={profileUrl(member.github)} target="_blank" rel="noreferrer">
+              <img
+                className="team__avatar"
+                src={avatarUrl(member.github)}
+                srcSet={`${avatarUrl(member.github, 120)} 1x, ${avatarUrl(member.github, 240)} 2x`}
+                width={120}
+                height={120}
+                loading="lazy"
+                decoding="async"
+                alt=""
+              />
+              <span>
+                <span className="team__name">{member.name}</span>
+                <span className="team__handle">@{member.github}</span>
+              </span>
             </a>
           </li>
         ))}
