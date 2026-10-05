@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Location; \\(Get-Command node -ErrorAction SilentlyContinue\\).Source; \\(Get-Command npm -ErrorAction SilentlyContinue\\).Source; \\(Get-Command wsl -ErrorAction SilentlyContinue\\).Source)",
+      "PowerShell(wsl -d Ubuntu-24.04 -- bash -lc \"cd ~/swmaestro/runiverse-homepage && pwd && ls -a && echo '--- versions ---' && node -v; npm -v\")",
+      "PowerShell(wsl -d Ubuntu-24.04 -- bash -lc \"ls -a ~/swmaestro/runiverse-homepage\" ; Write-Output \"=== node candidates ===\"; wsl -d Ubuntu-24.04 -- bash -lc \"ls -d ~/.nvm ~/.fnm ~/.volta /usr/local/n 2>/dev/null; which -a node; ls ~/.nvm/versions/node 2>/dev/null; cat \\\\$\\(which node\\) 2>/dev/null | head -20\")",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc \"which -a node npm nvm fnm; echo ---; node -v; echo ---; npm -v; echo ---; ls ~/.nvm/versions/node 2>/dev/null\")",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc \"{ echo '## which node:'; which -a node; echo '## which npm:'; which -a npm; echo '## node -v:'; node -v; echo '## npm -v:'; npm -v; echo '## nvm dir:'; ls ~/.nvm/versions/node; echo '## shim:'; head -30 /bin/node; } > /tmp/envcheck.txt 2>&1; cat /tmp/envcheck.txt\")",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc \"{ echo '## shim content:'; cat ~/.local/bin/node; echo; echo '## nvm bin:'; ls ~/.nvm/versions/node/v24.18.0/bin; echo '## direct:'; ~/.nvm/versions/node/v24.18.0/bin/node -v; ~/.nvm/versions/node/v24.18.0/bin/npm -v; } > /tmp/e2.txt 2>&1; cat /tmp/e2.txt\")",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc \"export PATH=$HOME/.nvm/versions/node/v24.18.0/bin:$PATH; { echo '## node:'; node -v; echo '## npm:'; npm -v; } > /tmp/e3.txt 2>&1; cat /tmp/e3.txt\")",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc 'export PATH=\"$HOME/.nvm/versions/node/v24.18.0/bin:$PATH\"; cd ~/swmaestro/runiverse-homepage; npm install > /tmp/npm-install.log 2>&1; echo \"exit=$?\"; tail -15 /tmp/npm-install.log')",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc 'export PATH=\"$HOME/.nvm/versions/node/v24.18.0/bin:$PATH\"; cd ~/swmaestro/runiverse-homepage; npm run build > /tmp/build.log 2>&1; echo \"exit=$?\"; cat /tmp/build.log')",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc 'cd ~/swmaestro/runiverse-homepage; { echo \"## log:\"; git log --oneline -5; echo \"## status:\"; git status --short; echo \"## top-level:\"; ls -a; } > /tmp/g.txt 2>&1; cat /tmp/g.txt')",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc 'cd ~/swmaestro/runiverse-homepage; set -e; mkdir -p homepage-web; mv index.html package.json package-lock.json src tsconfig.json vite.config.ts node_modules homepage-web/; rm -rf dist; { echo \"## root:\"; ls -a; echo \"## homepage-web:\"; ls -a homepage-web; } > /tmp/mv.txt 2>&1; cat /tmp/mv.txt')",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc 'export PATH=\"$HOME/.nvm/versions/node/v24.18.0/bin:$PATH\"; cd ~/swmaestro/runiverse-homepage/homepage-web; npm run build > /tmp/b2.log 2>&1; echo \"exit=$?\"; tail -12 /tmp/b2.log')",
+      "PowerShell(wsl --% -d Ubuntu-24.04 bash -lc 'cd ~/swmaestro/runiverse-homepage; git status --short > /tmp/gs.txt 2>&1; cat /tmp/gs.txt')"
+    ]
+  }
+}
