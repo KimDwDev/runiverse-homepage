@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { APP_STORE_URL, NAV_ITEMS } from '../content'
+import { NAV_ITEMS } from '../content'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -26,7 +26,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <a className="button button--sm" href={APP_STORE_URL}>
+        <a className="button button--sm" href="#download">
           앱 다운로드
         </a>
       </div>
