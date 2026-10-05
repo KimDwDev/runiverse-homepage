@@ -1,13 +1,9 @@
 import Section from '../components/Section'
-import { TEAM, avatarUrl, profileUrl } from '../content'
+import { TEAM, TEAM_INTRO, avatarUrl, profileUrl } from '../content'
 
 export default function Team() {
   return (
-    <Section
-      id="team"
-      title="만드는 사람"
-      description="달리기를 좋아하는데 혼자서는 잘 안 되던 사람들이 모였습니다."
-    >
+    <Section id="team" title={TEAM_INTRO.title} description={TEAM_INTRO.description}>
       {/* 카드로 감싸지 않고 이름과 얼굴만 나란히 */}
       <ul className="team">
         {TEAM.map((member) => (

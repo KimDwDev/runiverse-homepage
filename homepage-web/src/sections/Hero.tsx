@@ -1,28 +1,48 @@
-import { APP_STORE_URL, HERO } from '../content'
+import DownloadButtons from '../components/DownloadButtons'
+import { HERO, PROMO_VIDEO_ID } from '../content'
 
 export default function Hero() {
   return (
     <section id="top" className="hero">
-      <div className="container">
-        <p className="hero__meta">{HERO.meta}</p>
+      <div className="container hero__inner">
+        <div className="hero__text">
+          <p className="hero__meta">{HERO.meta}</p>
 
-        <h1 className="hero__title">
-          {HERO.title.map((line) => (
-            <span key={line}>{line}</span>
+          <h1 className="hero__title">
+            {HERO.title.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
+          </h1>
+
+          <hr className="rule rule--short" />
+
+          {HERO.description.map((paragraph) => (
+            <p key={paragraph} className="hero__description">
+              {paragraph}
+            </p>
           ))}
-        </h1>
 
-        <hr className="rule rule--short" />
+          <div className="hero__actions">
+            <DownloadButtons />
+          </div>
 
-        <p className="hero__description">{HERO.description}</p>
+          <div className="hero__links">
+            <a className="link" href="#how">
+              {HERO.howLink}
+            </a>
+            <a className="link" href="#video">
+              {HERO.videoLink}
+            </a>
+          </div>
+        </div>
 
-        <div className="hero__actions">
-          <a className="button" href={APP_STORE_URL}>
-            앱 다운로드
-          </a>
-          <a className="link" href="#how">
-            먼저 흐름부터 보기
-          </a>
+        <div id="video" className="hero__video">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${PROMO_VIDEO_ID}?rel=0&playsinline=1`}
+            title="Runiverse 소개 영상"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       </div>
     </section>

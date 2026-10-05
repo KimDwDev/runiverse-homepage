@@ -1,8 +1,8 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Hero from './sections/Hero'
-import Features from './sections/Features'
-import HowItWorks from './sections/HowItWorks'
+import Story from './sections/Story'
+import Music from './sections/Music'
 import Team from './sections/Team'
 import CallToAction from './sections/CallToAction'
 
@@ -12,8 +12,8 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Features />
-        <HowItWorks />
+        <Story />
+        <Music />
         <Team />
         <CallToAction />
       </main>
